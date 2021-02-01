@@ -1,6 +1,6 @@
 # Sachbericht bwIPv6@academia 2020
 
-Dieser Sachbericht bietet einen Einblick in die Tätigkeiten im Rahmen des Projekts ausgeführt wurden. Einmal soll hierbei auf die Umsetzung der Maßnahmen im Integrationsplan eingegangen werden. Danach wird noch einmal auf die Projektmeilensteine eingegangen. 
+Dieser Sachbericht bietet einen Einblick in die Tätigkeiten die im Rahmen des Projekts ausgeführt wurden. Einmal soll hierbei auf die Umsetzung der Maßnahmen im Integrationsplan eingegangen werden. Danach wird noch einmal auf die Projektmeilensteine eingegangen. 
 
 ## Rückblick auf Integrationsplan 
 
@@ -21,12 +21,12 @@ Die Key-Punkte aus dem Integrationsplan waren:
 
 ### Renumbering
 
-Das Renumbering stellte eine der größeren Hürden dar, da wir nicht nur IPv6 ausrollen, sondern zeitgleich auch bestehende Deployments anpassen mussten. Das Renumbering von `2001:7c0:900::/48` nach `2001:7c0:3100::/40` ist jedoch Stand jetzt abgeschlossen. 
-Lediglich das BGP-Announcement muss, nach Absprache mit BelWue, abgestellt werden. 
+Das Renumbering stellte eine der größeren Hürden dar, da wir nicht nur IPv6 ausrollen, sondern zeitgleich auch bestehende Deployments anpassen mussten. Das Renumbering von `2001:7c0:900::/48` nach `2001:7c0:3100::/40` ist jedoch abgeschlossen. 
+Lediglich das BGP-Announcement muss, nach Absprache mit BelWue, abgestellt werden und die Delegation im DNS und im whois an BelWüe zurück gegeben werden. 
 
 ### IPAM
 
-Das IPAM war schon zum Zeitpunkt der Integrationsplans weitestgehend fertig und im produktiven Einsatz. 
+Das IPAM war schon zum Zeitpunkt des Integrationsplans weitestgehend fertig und im produktiven Einsatz. 
 Jedoch sind noch Features hinzugekommen:
 Es ist nun möglich, per Keyword Netze als "PLANNED" zu deklarieren. Das sind Prefixes, die zwar für den jeweiligen Einsatz vorgesehen, aber aus diversen Gründen noch nicht konfiguriert sind. 
 
@@ -51,14 +51,14 @@ Das IPAM kann nun auch DHCPv6 Leases erstellen und direkt dem isc-dhcp-server zu
 
 #### Zusammenfassung:
 
-Das IPAM war von Anfang an aus Feature-Parity zwicshen IPv4 und IPv6 ausgelegt. Über die Zeit kamen noch spezifische Features hinzu. 
+Das IPAM war von Anfang an für Feature-Parity zwischen IPv4 und IPv6 ausgelegt. Über die Zeit kamen noch weitere spezifische Features hinzu die aber natürlich für IPv4 und IPv6 implementiert wurden. 
 
 
 ### Policy-Klassen und Firewalling
 
 Im Integrationsplan wird das Konzept der Netzklassen in Bezug auf das Firewalling vorgestellt. Dabei ging es darum, Nutzern und Instituten die Möglichkeit zu bieten, offene Netzbereiche und Bereiche hinter einer stateful-Firewall zu nutzen. 
 Das wird im ersten Schritt dadurch abgebildet, dass pro Vlan mehrere Prefixe verwendet werden: eines ist "OPEN", sprich nicht hinter einer Firewall. Weitere Netze sind eventuell hinter der Firewall.
-Zum Rollout von IPv6 in den Instituten erachteten wir im Sachbericht die Ermöglichung von SLAAC für essentiell. Diese koppelten wir aber an Firewalling, da sichergestellt werden sollte, dass Rechner nicht ausversehen im Internet erreichbar sein sollen. Analog dazu wollen wir für diese gefirewallten Netzen auch IPv4 via DHCP anbieten. 
+Zum Rollout von IPv6 in den Instituten erachteten wir im Sachbericht die Ermöglichung von SLAAC für essentiell. Diese koppelten wir aber an Firewalling, da sichergestellt werden sollte, dass Rechner nicht aus Versehen im Internet erreichbar sein sollen. Analog dazu wollen wir für diese gefirewallten Netzen auch IPv4 via DHCP anbieten. 
 
 
 #### Verfügbare Policies
@@ -73,14 +73,14 @@ Folgende Policies werden noch implementiert:
 
 **GRP**: Gruppen-Policy: Alle Netze aus einer Gruppe können aufeinander zugreifen, alles andere ist stateful und `established in`
 
-**CUSTOM**: Kunde kann selber via gitlab Profilregeln festlegen. 
+**CUSTOM**: Kunde kann selber via gitlab Profilregeln festlegen und pull-requests stellen. 
 
 
 
 #### Zusammenfassung
 
 Das Firewalling und Policy-Konzept wurde weitestgehend umgesetzt, wie im Integrationsplan beschrieben. 
-Die ersten Institute laufen auch schon in diesem Modus und sind bisher sehr zufrieden. 
+Die ersten Institute laufen schon in diesem Modus und sind bisher sehr zufrieden. 
 
 
 
@@ -104,24 +104,24 @@ Deswegen setzen wir in den FRITZBOX-Netzen auf SLAAC.
 
 #### AUF ANFORDERUNG:
 
-Nutzer, die spezielle Bedürfnisse haben (z.B DHCPv6), können wir diese erfüllen. 
+Nutzern, die spezielle Anforderungen haben (z.B DHCPv6), können wir diese erfüllen. 
 Je nach Wunsch, kann ein offenes oder firewalled Netz mit einem DHCP Relay auf unseren Routern kombiniert werden. 
 
 
 ### Dienste mit Dual-Stack ausstatten
 
-Einige Dienste der Universität waren noch nicht per IPv6 erreichbar. Wir wollen erreichen, dass alle bestehenden Dienste Dual-Stackfähig werden. 
+Einige Dienste der Universität waren noch nicht per IPv6 erreichbar. Wir wollen erreichen, dass alle bestehenden Dienste dual-stack-fähig werden. 
 Im Folgenden soll erneut ein Blick auf die im Integrationsplan aufgeführten Dienste geworfen werden. 
 
 #### UPDATE: Mail:
 **Status:** Dual-Stack.
 
-Mail ist mittlerweile Dual-Stackfähig und im produktiven Einsatz. 
+Mail ist mittlerweile dual-stack-fähig und im produktiven Einsatz. 
 
 #### UPDATE: VPN:
 **Status:** Dual-Stack.
 
-Das VPN ist renumberd und im produktiven Einsatz
+Das VPN ist renumbered und im produktiven Einsatz.
 
 #### RADIUS: 
 **Status:** IPv4 Only.
@@ -135,17 +135,17 @@ TODO
 #### UPDATE: Zentrale Universitätsverwaltung (ZUV)
 **Status:** Clients können v6. Server müssen noch auf Dual-Stack umgestellt werden.
 
-Die Firewall vor der ZUV kann nun IPv6. Die meisten Clients haben auch nun eine IPv6-Adresse und benutzen Dual-Stack. 
+Die Firewall vor der ZUV kann nun IPv6. Die meisten Clients haben nun auch eine IPv6-Adresse und benutzen Dual-Stack. 
 Jedoch fehlen noch einige Server-Dienste: Unter anderem auch HIS. 
 
 #### IDM
 
-Nachwievor haben die LDAP-Server AAAA-Einträge. Der IPv6 Rollout in der ZUV (Zentralen Universitätsverwaltung). Hier herrscht auch eine Abhängigkeit zur Umstellung der Server der ZUV. 
+!!! da klemmt was und ich weiß nicht was du sagen willst !!! Nachwievor haben die LDAP-Server AAAA-Einträge. Der IPv6 Rollout in der ZUV (Zentralen Universitätsverwaltung). Hier herrscht auch eine Abhängigkeit zur Umstellung der Server der ZUV. 
 
 #### Sonstige Dienste: 
 **Status:** gemischt
 
-Bei SOGO herrscht noch eine Abhängigkeit zu Uni Konstanz vor, da diese den Service für uns erbringt. 
+Bei SOGO herrscht noch eine Abhängigkeit zur Uni Konstanz, da diese den Service für uns erbringt. 
 
 #### WWW-Proxy:
 
@@ -157,15 +157,15 @@ TODO
 ####  Firewalling
 
 Zur Bereitstellung des Firewallings wurden zwei Mikrotik CCR1072 beschafft und konfiguriert. Eine CI-Pipeline existiert. 
-Mit diesen Geräten können nun Firwalling-Diesnte für die automatisch konfigurierten Netzbereiche zur Verfügung gestellt werden.
+Mit diesen Geräten können nun Firwalling-Dienste für die automatisch konfigurierten Netzbereiche zur Verfügung gestellt werden.
 
 #### Sonstige:
 
-Wir haben keine Hardware ausserhalb der regulären Anschaffung gekauft. 
+Wir haben keine Hardware außerhalb der regulären Anschaffung gekauft. 
 
 ### Management
 
-In diesem Abschnitt soll es vor allem um Management-Netze und Services gehen. 
+In diesem Abschnitt wird vor allem das Management-Netz und desse Services betrachtet. 
 
 #### Monitoring
 
@@ -178,10 +178,10 @@ Bei Mikrotik-Geräten mit mehreren IP-Adressen muss eine Source-Adresse für SNM
 Das ist für IPv4 egal, bei IPv6 dropt Go-SNMP jedoch das Antwortpaket, was dazu führt, dass Telegraf keine Metriken mehr sammeln kann. 
 Ein Patch für GO-SNMP ist bereits eingereicht (nicht von uns), ein Workaround ist, die src-addr des snmpd auf eine feste Loopback-Adresse zu konfigurieren. Damit verlieren wir aber leider (_sarcasm_) die Möglichkeit Metriken via IPv4 zu sammeln. 
 
-Bei den von uns eingesetzen Cisco ASAs konnte keine ACL für snmp mit IPv6 festgelegt werden. Das wird erst in ASA 9.9 unterstüzt. jedoch können zwei unserer ASAs diese Version nicht mehr bekommen. Hier werden die Metriken weiter über IPv4 gesammelt. 
+Bei den von uns eingesetzten Cisco ASAs konnte keine ACL für snmp mit IPv6 festgelegt werden. Das wird erst in ASA 9.9 unterstüzt. jedoch können zwei unserer ASAs diese Version nicht mehr bekommen. Hier werden die Metriken weiter über IPv4 gesammelt. 
 
 #### Management-Netz
-Alle unsere Geräte untestützen prinzipiell ssh via IPv6. Allerdings sind wir momentan noch vorsichtig bei der Umstellung des Management-Netzes auf IPv6-only. Das Monitoring hat gezeigt, dass doch nicht überall Feature-Parity vorherrscht.
+Alle unsere Geräte unterstützen prinzipiell ssh via IPv6. Allerdings sind wir momentan noch vorsichtig bei der Umstellung des Management-Netzes auf IPv6-only. Das Monitoring hat gezeigt, dass doch nicht überall Feature-Parity vorherrscht.
 Deswegen gilt es hier, zunächst einzelne Inseln zu schaffen. 
 Als Zwischenschritt werden wir auch hier vorerst den Dual-Stack-Betrieb anstreben. 
 
@@ -228,7 +228,7 @@ Hinweise zu den Bemerkungen:
 | Aggregation/Distribution-Switch   | Cisco Catalyst 68xx      | Vollumfänglich | Alte Core-Router
 | Core/Edge                         | Cisco Nexus 9k           | Vollumfänglich | 
 | Firewalling/Nat-GWs               | Mikrotiks (Verschiedene mit RouterOS) | Vollumfänglich (Ausnahme: Keine /127 Linknetze) | Stateful-Firewalls, Wohnheims-FWs, DMZ, Wifi, etc. 
-| VPN                               | Cisco ASA                | In aktueller Version kein SNMP via Ipv6. | Kein Show-Stopper. Workaround für Monitoring. 
+| VPN                               | Cisco ASA                | In aktueller Version kein SNMP via IPv6. | Kein Show-Stopper. Workaround für Monitoring. 
 | Wifi-APs                          | Aruba (verschiedene)     | Keine Client-Isolation für v6 ohne Controller. | Ersetzen die alten Cisco-APs
 | Wifi-APs                          | (verschiedene)           | Teilweise keine ACLs für IPv6, kein Multicast Snooping | werden durch Aruba turnusgemäß ersetzt. 
 
@@ -238,7 +238,7 @@ Hinweise zu den Bemerkungen:
 
 Die notwendingen Investitionen können weitestgehend im normalen Haushalt abgefangen werden: Veraltete Switches werden turnusgemäß getauscht. 
 Speziell für das IPv6-Projekt wurden zwei stateful-firewalls angeschafft. Die Investition belief sich auf < 10.000 Euro. 
-Bei der Entwiclungs des notwendigen Toolings (IPAM, CI-Pipelines, etc.) sind  zwei Personen eingebunden. Diese Tätigkeiten befinden sich aber teis auch in den normalen Aufgabengebieten dieser Personen.
+Bei der Entwiclungs des notwendigen Toolings (IPAM, CI-Pipelines, etc.) sind  zwei Personen eingebunden. Diese Tätigkeiten befinden sich aber teils auch in den normalen Aufgabengebieten dieser Personen.
 
 ### Meilenstein 3: IPv6-Allokationsplan und Zielvorgaben
 
@@ -288,11 +288,11 @@ Die Universität Ulm verfügte schon vor Beginn des Projekts über ein IPv6-Pref
 
 ### Meilenstein 6: Aktivierung von IPv6 im Kernnetz
 
-Die Universität Ulm verfügte schon vor Beginn des Projekts über ein IPv6-Prefix, das auch aktiv genutzt wurde und an BelWue announced wurde. 
+!!! der satz macht keinen sinn, ist gedoppelt von oen !!! Die Universität Ulm verfügte schon vor Beginn des Projekts über ein IPv6-Prefix, das auch aktiv genutzt wurde und an BelWue announced wurde. 
 
-### Meilenstein 7: Anbindung zentraler Dienste per IPv6 (DNS, Mail und Web)
+### Meilenstein 7: Anbindung zentraler Dienste per IPv6 (NTP, DNS, Mail und Web)
 
-Die drei genannten Dienste sind via IPv6 erreichbar und nutzbar.
+Die vier genannten Dienste sind via IPv6 erreichbar und nutzbar.
 
 
 ### Meilenstein 8: Wlan und VPN via IPv6
@@ -300,7 +300,7 @@ Die drei genannten Dienste sind via IPv6 erreichbar und nutzbar.
 Das VPN unterstützt IPv6 in vollem Umfang. 
 Im Wlan steht dem Roll-Out technisch nichts im Wege. Jedoch stellten wir fest, dass wir ohne Wlan-Controller auf unseren Aruba-APs keine IPv6 Client-Isolation konfigurieren können. 
 Hier haben wir nun die politische Frage zu klären, ob dies ein Show-Stopper ist, oder nicht.
-Momentan ist daher der Roll-Out von IPv6 im Wlan-Netz nohc incht erfolgt und bis zur Klärung dieser Frage verschoben.
+Momentan ist daher der Roll-Out von IPv6 im Wlan-Netz noch n8cht erfolgt und bis zur Klärung dieser Frage verschoben.
 
 ### Meilenstein 9: IPv6-Anbindung von mindestens fünf Instituten. 
 
