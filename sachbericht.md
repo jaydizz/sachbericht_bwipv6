@@ -165,7 +165,7 @@ Wir haben keine Hardware außerhalb der regulären Anschaffung gekauft.
 
 ### Management
 
-In diesem Abschnitt wird vor allem das Management-Netz und desse Services betrachtet. 
+In diesem Abschnitt wird vor allem das Management-Netz und dessen Services betrachtet. 
 
 #### Monitoring
 
