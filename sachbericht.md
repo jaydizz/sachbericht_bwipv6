@@ -128,9 +128,10 @@ Das VPN ist renumbered und im produktiven Einsatz.
 
 Der RADIUS-Server ist immer noch nur via IPv4 erreichbar. Hier gilt es nach wie vor zu klären, ob und wann DFN den RadSecProxy auch via IPv6 anbietet. 
 
-#### Active Directory
+#### UPDATE: Active Directory
 
-TODO
+Dei Windows-Clients haben alle via DHCPv6 eine gültige IPv6-Adresse. Die Domänencontroller haben auch schon IPv6. Jedoch haben die Domänencontroller noch keinen AAAA-Record. Hier muss noch evaluiert werden, bevor das deployment live geschaltet werden kann. 
+
 
 #### UPDATE: Zentrale Universitätsverwaltung (ZUV)
 **Status:** Clients können v6. Server müssen noch auf Dual-Stack umgestellt werden.
@@ -140,7 +141,8 @@ Jedoch fehlen noch einige Server-Dienste: Unter anderem auch HIS.
 
 #### IDM
 
-!!! da klemmt was und ich weiß nicht was du sagen willst !!! Nachwievor haben die LDAP-Server AAAA-Einträge. Der IPv6 Rollout in der ZUV (Zentralen Universitätsverwaltung). Hier herrscht auch eine Abhängigkeit zur Umstellung der Server der ZUV. 
+Nachwievor haben die LDAP-Server AAAA-Einträge. Hier sind noch Abhängigkeiten zum IPv6 Rollout in der Zentralen Universitätsverwaltung vorhanden. Erst danach können alle IDM-Dienste voll dual-stack-fähig gemacht werde.  
+Das Self-Service-Portal für Studierende wird auch erst nach Umstellung aller ZUV-Serverdienste umgestellt.
 
 #### Sonstige Dienste: 
 **Status:** gemischt
@@ -149,7 +151,7 @@ Bei SOGO herrscht noch eine Abhängigkeit zur Uni Konstanz, da diese den Service
 
 #### WWW-Proxy:
 
-TODO
+Der WWW-Proxy im Verwaltungsnetz ist nun dual-stack-fähig.
 
 
 ### Hardware 
@@ -288,7 +290,7 @@ Die Universität Ulm verfügte schon vor Beginn des Projekts über ein IPv6-Pref
 
 ### Meilenstein 6: Aktivierung von IPv6 im Kernnetz
 
-!!! der satz macht keinen sinn, ist gedoppelt von oen !!! Die Universität Ulm verfügte schon vor Beginn des Projekts über ein IPv6-Prefix, das auch aktiv genutzt wurde und an BelWue announced wurde. 
+Bereits vor Beginn war der Core der Uni Ulm voll IPv6-fähig. 
 
 ### Meilenstein 7: Anbindung zentraler Dienste per IPv6 (NTP, DNS, Mail und Web)
 
