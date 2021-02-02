@@ -47,7 +47,7 @@ NAT_ROUTER  = 134.60.112.188
 ```
 
 #### IPAM und DHCPv6
-Das IPAM kann nun auch DHCPv6 Leases erstellen und direkt dem isc-dhcp-server zuführen. 
+Das IPAM kann nun auch DHCPv6 Leases erstellen und direkt und automatisisert dem isc-dhcp-server zuführen. 
 
 #### Zusammenfassung:
 
